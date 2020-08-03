@@ -28,7 +28,6 @@ class Handler:
                 for i in values:
                     permission = i['annotations'][0]['practice']
                     if '3rdParty' in permission:
-                        print(permission)
                         all_permissions = [i['sentence_text'], permission]
                         self._permissions.append(all_permissions)
 
