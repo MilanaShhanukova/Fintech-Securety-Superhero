@@ -1,16 +1,12 @@
-# This is a sample Python script.
+from parser import *
+from handler import Handler
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    current_file = open_yaml_files()
+    for entry in current_file:
+        company = Handler(entry)
+        company.handle_file()
+        data = company.get_permissions_data()
+        company_name = company.get_company_name()
+        save_file(company_name, data)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

@@ -1,9 +1,12 @@
 class Handler:
 
-    def __init__(self, entry):
+    def __init__(self, initial_data: dict):
+        """
 
+        :param initial_data: dict
+        """
         self._permissions = list()
-        self._initial_data = entry
+        self._initial_data = initial_data
         self._company_name = str
 
     def handle_file(self):
@@ -27,5 +30,5 @@ class Handler:
                         permission = [i['sentence_text'], i['annotations'][0]['practice']]
                         self._permissions.append(permission)
 
-    def get_permissions_data(self):
+    def get_permissions_data(self) -> list:
         return self._permissions
