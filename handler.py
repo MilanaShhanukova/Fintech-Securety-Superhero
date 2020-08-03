@@ -26,8 +26,11 @@ class Handler:
         for key, values in data.items():
             if (key == 'sentences') and values:
                 for i in values:
-                    permission = [i['sentence_text'], i['annotations'][0]['practice']]
-                    self._permissions.append(permission)
+                    permission = i['annotations'][0]['practice']
+                    if '3rdParty' in permission:
+                        print(permission)
+                        all_permissions = [i['sentence_text'], permission]
+                        self._permissions.append(all_permissions)
 
     def get_permissions_data(self) -> list:
         return self._permissions
