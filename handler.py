@@ -23,9 +23,6 @@ class Handler:
     def __set_company_name(self):
         self._company_name = self._initial_data['policy_name']  # This stroke consists a company name in the file
 
-    def get_company_name(self):
-        return self._company_name
-
     def __handle_data(self, data):
         for key, values in data.items():
             if (key == 'sentences') and values:
@@ -35,5 +32,5 @@ class Handler:
                         all_permissions = [i['sentence_text'], permission]
                         self._permissions.append(all_permissions)
 
-    def get_permissions_data(self) -> list:
-        return self._permissions
+    def get_company_data(self) -> tuple:
+        return self._permissions, self._company_name

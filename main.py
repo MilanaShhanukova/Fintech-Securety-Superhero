@@ -5,20 +5,20 @@ from excel_handle import *
 if __name__ == '__main__':
 
     unique_permissions = count_unique_permissions()
+
     table_of_companies = ExcelHandler(unique_permissions)
-    current_file = open_policy_yaml_files()
 
-    for entry in current_file:
+    privacy_files = open_policy_yaml_files()
 
-        company = Handler(entry)
+    for current_privacy_file in privacy_files:
+
+        company = Handler(current_privacy_file)
         company.handle_file()
 
-        data = company.get_permissions_data()
+        company_permissions, company_name = company.get_company_data()
 
-        company_name = company.get_company_name()
+        table_of_companies.add_company_into_table(company_name, company_permissions)
 
-        table_of_companies.add_company_into_table(company_name, data)
-
-        #save_file(company_name, data)
+        save_file_as_json(company_name, company_permissions)
 
     table_of_companies.save_excel_file()
