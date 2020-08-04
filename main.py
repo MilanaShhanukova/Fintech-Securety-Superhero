@@ -6,7 +6,7 @@ if __name__ == '__main__':
 
     unique_permissions = count_unique_permissions()
     table_of_companies = ExcelHandler(unique_permissions)
-    current_file = open_yaml_files()
+    current_file = open_policy_yaml_files()
 
     for entry in current_file:
 
