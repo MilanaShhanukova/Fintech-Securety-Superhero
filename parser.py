@@ -3,7 +3,7 @@ import os
 import json
 
 
-def count_files(path2files: str) -> int:
+def count_files_in_directory(path2files: str) -> int:
     """
     Count files in the directory
     :param path2files: str - path to your files
@@ -13,14 +13,14 @@ def count_files(path2files: str) -> int:
     return len(files)
 
 
-def open_yaml_files(path2files: str = "dataset_PrivacyMap/annotations/") -> iter:
+def open_policy_yaml_files(path2files: str = "dataset_PrivacyMap/annotations/") -> iter:
     """
     Open yaml files in the directory
 
     :param path2files: str - path to your yaml files
     :return: generator object
     """
-    file_count = count_files(path2files)
+    file_count = count_files_in_directory(path2files)
 
     for file_number in range(1, file_count + 1):
         with open(f"{path2files}policy_{file_number}.yml") as a_yaml_file:
@@ -28,9 +28,9 @@ def open_yaml_files(path2files: str = "dataset_PrivacyMap/annotations/") -> iter
             yield parsed_yaml_file
 
 
-def save_file(company_name: str, data: list, path: str = None, category: bool = False) -> None:
+def save_file_as_json(company_name: str, data: list, path: str = None, category: bool = False) -> None:
     """
-    Save your files as a json format
+    Save your files as a json format. This file consists information about permissions and their description
 
     :param company_name: str - set a company name. it's used as a file name
     :param data: str - list of permissions
