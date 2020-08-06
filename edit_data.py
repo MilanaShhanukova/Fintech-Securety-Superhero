@@ -11,7 +11,6 @@ def list_of_files() -> list:
 
 companies_names, names_of_files = list_of_files()
 
-
 #получение всех видов данных для одного файла
 def get_features(file_name:str) -> set:
     # поменяем директорию, если не находимся в папке с файлами о данных
@@ -35,7 +34,6 @@ def dict_file_features() -> dict:
 
 company_features = dict_file_features()
 
-
 def clean_companies() -> list:
     clean = []
     for company, data in company_features.items():
@@ -44,7 +42,6 @@ def clean_companies() -> list:
     return clean
 
 no_data_companies = clean_companies()
-
 
 
 #преобразованная база данные-все компании
@@ -64,6 +61,7 @@ def dict_feature_companies() -> dict:
 
 
 feature_company = dict_feature_companies()
+print(len(list(feature_company.keys())))
 
 #преобразованные названия данных
 new_features = {'Identifier_Cookie_or_similar_Tech_3rdParty': "Cookie or web-beacon files",
@@ -81,7 +79,20 @@ new_features = {'Identifier_Cookie_or_similar_Tech_3rdParty': "Cookie or web-bea
                 'Contact_Phone_Number_3rdParty':"Your phone number",
                 'Contact_Address_Book_3rdParty': "Your phone book",
                 'Contact_ZIP_3rdParty': "Your area code",
-                'Contact_Password_3rdParty':"You credential and passwords"
+                'Contact_Password_3rdParty':"Your credential and passwords",
+                "Location_WiFi_3rdParty": "Your wifi-location",
+                "Location_IP_Address_3rdParty":"Your IP Address",
+                "Location_GPS_3rdParty":"Your GPS location",
+                "Location_Cell_Tower_3rdParty":"Location of your network-base",
+                "Location_Bluetooth_3rdParty":"Detailed location of your bluetooth-device",
+                "Identifier_SSID_BSSID_3rdParty":"Wifi networks that you used",
+                "Identifier_SIM_Serial_3rdParty":"Your serial number",
+                "Identifier_Mobile_Carrier_3rdParty":"Your mobile oparator",
+                "Identifier_MAC_3rdParty":"Your hardware or device id",
+                "Identifier_IMSI_3rdParty":"Your international mobile subscriber",
+                "Identifier_IMEI_3rdParty":"Your international mobile equipment",
+                "Facebook_SSO":"Login credentials from one of your accounts",
+                "Demographic_Gender_3rdParty":"Your gender"
                }
 
 
