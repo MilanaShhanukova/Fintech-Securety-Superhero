@@ -68,4 +68,39 @@ def graph_feature(user_feature):
             picture_name = "graph" + str(i) + ".png"
             plt.savefig(picture_name, format="PNG")
 
+
+clean_company = edit_data.no_data_companies
+
+def clean_company_graph(clean_company):
+    if len(clean_company) > 15:
+        clean_company = edit_companies(clean_company)
+        #print(parties)
+    else:
+        clean_company = [clean_company]
+    os.chdir(os.getcwd() + "\.." + "\\pictures_of_clean_company")
+
+    for i in range (len(clean_company)):
+        graph = nx.Graph()
+        graph.add_node("Clean Company")
+        for company in clean_company[i]:
+            graph.add_node(company)
+            graph.add_edge("Clean Company", company)
+            fig = plt.figure(figsize=(14, 14))
+            ax = plt.subplot(111)
+            ax.set_title(user_feature, fontsize=10)
+
+            nx.draw(graph,
+                    node_size=6000,
+                    node_color="red",
+                    with_labels=True,
+                    alpha=1,
+                    width=2,
+                    font_weight=570,
+                    edge_color="grey")
+        picture_name = "graph" + str(i+1)+ ".png"
+        plt.savefig(picture_name, format="PNG")
+
+
+
+clean_company_graph(clean_company)
 graph_feature(user_feature)

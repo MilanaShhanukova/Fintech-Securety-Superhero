@@ -46,6 +46,7 @@ def clean_companies() -> list:
 no_data_companies = clean_companies()
 
 
+
 #преобразованная база данные-все компании
 def dict_feature_companies() -> dict:
     features = []
