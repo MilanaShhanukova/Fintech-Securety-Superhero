@@ -1,3 +1,6 @@
 yaml
-json
-os
+openpyxl
+pandas
+networkx
+matplotlib
+plotly
