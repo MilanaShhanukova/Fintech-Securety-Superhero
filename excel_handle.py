@@ -1,6 +1,5 @@
 import pandas as pd
 import yaml
-import openpyxl
 
 
 def open_yaml_features_file(path2file: str):
@@ -8,9 +7,9 @@ def open_yaml_features_file(path2file: str):
         return yaml.load(yaml_file, Loader=yaml.FullLoader)
 
 
-def count_unique_permissions(path2file: str = 'dataset_PrivacyMap/features.yml') -> map:
+def unique_features(path2file: str = 'dataset_PrivacyMap/features.yml') -> map:
     """
-    Parse a features file to get only unique permissions
+    Parse a features file to get only unique features
 
     :param path2file: str - path to features.yaml file
     :return: map - key it's a unique permission, value is a description
@@ -51,7 +50,7 @@ class ExcelHandler:
         res = list()
 
         for permission in df_columns:
-            res.append('Yes') if permission in company_permission else res.append('No')
+            res.append('Yes') if permission in company_permission else res.append(' ')
         self.companies_permissions.loc[company_name] = res  # Add to pandas DataFrame
 
     def save_excel_file(self, path: str = "table_of_companies") -> None:
